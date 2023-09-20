@@ -38,10 +38,12 @@
       const  maxPrice = computed(()=> {
         // Calculate the maximum price from vacancies
         let price = null
+        let max = null
         if(vacancies.value.length>0){
           price = vacancies.value.map((vacancy) => vacancy?.date?.map(item => {return parseFloat(item.price)}));
+          max = Math.max(...price?.flat())
         }
-        return Math.max(...price.flat())
+        return max ?? 0
       })
 
       const filteredVacancies = computed(()=> {

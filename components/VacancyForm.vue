@@ -9,23 +9,24 @@
       @finishFailed="onFinishFailed"
     >
       <a-form-item label="Title">
-        <a-input v-model:value="formData.title" placeholder="input placeholder" />
+        <a-input v-model:value="formData.title" placeholder="input placeholder" required/>
       </a-form-item>
       <a-form-item label="Description">
         <a-input
           v-model:value="formData.description"
           placeholder="input placeholder"
+          required
         />
       </a-form-item>
       <a-form-item label="Date">
-        <a-range-picker v-model:value="formData.dates" :format="dateFormat"/>
+        <a-range-picker v-model:value="formData.dates" :format="dateFormat" />
       </a-form-item>
       <div v-for="(dateEntry, index) in formData.dates" :key="index" class="date-entry">
         
         {{ dayjs(formData.dates[index]).format('DD-MM-YYYY') }}
         <hr/>
       <a-form-item label="Start Time">
-        <a-time-picker :id="'startTime' + index" v-model:value="dateEntry.startTime" format="hh:mm" value-format="hh:mm" />
+        <a-time-picker :id="'startTime' + index" v-model:value="dateEntry.startTime" format="hh:mm" value-format="hh:mm"  />
       </a-form-item>
 
       <a-form-item label="End Time">
@@ -33,7 +34,7 @@
       </a-form-item>
 
       <a-form-item label="Price">
-        <a-input :id="'price' + index" v-model:value="dateEntry.price"  />
+        <a-input type="number" step="any" :id="'price' + index" v-model:value="dateEntry.price"  required/>
       </a-form-item>
 
       <a-form-item label="Type">

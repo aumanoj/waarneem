@@ -3,15 +3,18 @@
       <h3>Title {{ vacancy.title }}</h3>
       <p> Description {{ vacancy.description }}</p>
       <p>Dates </p>
-      <ul>
-        <li v-for="date,index in vacancy.date" :key="date.id">
-          {{ dayjs(date[index]).format(format) }},
-          {{ date.startTime }},
-          {{ date.endTime }},
-          {{ date.price }},
-          {{ date.type }}
-        </li>
-      </ul>
+      <!-- <ul>
+        <li > -->
+          <a-row v-for="date,index in vacancy.date" :key="date.id" class="row">
+            <a-col :span="4">{{ dayjs(date[index]).format(format) }}</a-col>
+            <a-col :span="2">{{ date.startTime }}</a-col>
+            <a-col :span="2">{{ date.endTime }}</a-col>
+            <a-col :span="2">{{ date.price }}</a-col>
+            <a-col :span="2">{{ date.type }}</a-col>
+          </a-row>
+          
+        <!-- </li>
+      </ul> -->
     </div>
   </template>
   
@@ -36,6 +39,12 @@
     border: 1px solid #ccc;
     padding: 10px;
     margin: 10px;
+  }
+  .row{
+    background-color: gray;
+    padding: 10px;
+    margin: 10px;
+    color: #fff;
   }
   </style>
   

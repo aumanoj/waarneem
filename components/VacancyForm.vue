@@ -69,28 +69,31 @@ export default {
         title: '',
         description: '',
         dates: [],
-        startTime:'',
-        endTime:'',
-        price: 0,
-        type:''
     })
     const saveVacancy = () => {
       if (isValidForm()) {
-        const vacancyData = {
+        const result = {
           title: formData.title,
           description: formData.description,
-          date: formData.dates,
-          startTime: formData.startTime,
-          endTime: formData.endTime,
-          price: parseFloat(formData.price),
-          type: formData.type,
+          date: []
         };
-      
+        formData.dates.map((item,index)=>{
+          result.date.push({
+            date:dayjs(formData.dates[index]),
+            type:item?.type,
+            price:parseFloat(item?.price),
+            startTime:item?.startTime,
+            endTime:item?.endTime,
+          })
+         
+        })
+        
+      //console.log("check",vacancyData)
       if (props.vacancy) {
 
-        store.dispatch('save', props.vacancy.id, vacancyData);
+        store.dispatch('save', props.vacancy.id, result);
       } else {
-        store.dispatch('addVacancy', vacancyData);
+        store.dispatch('addVacancy', result);
       }      
     }
     }

@@ -39,17 +39,16 @@
         // Calculate the maximum price from vacancies
         let price = null
         if(vacancies.value.length>0){
-          price = Math.max(...vacancies.value.map((vacancy) => vacancy?.map((item)=>parseInt(item.price))));
+          price = vacancies.value.map((vacancy) => vacancy?.date?.map(item => {return parseFloat(item.price)}));
         }
-        return price
+        return Math.max(...price.flat())
       })
 
       const filteredVacancies = computed(()=> {
         // Filter vacancies based on price range
         let price = null
         if(vacancies.value.length>0){
-          price = vacancies.value.filter((vacancy) => parseInt(vacancy.price) <= filterPrice.value);
-          // price = vacancies.value.filter((vacancy) => vacancy.date.filter((item)=>item.price) <= filterPrice.value);
+          price = vacancies.value.filter((vacancy) => vacancy.date.map((item)=>parseFloat(item.price)) <= filterPrice.value);
         }
         return price
       })

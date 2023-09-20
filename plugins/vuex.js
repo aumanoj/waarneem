@@ -12,6 +12,7 @@ const store = createStore({
   },
   mutations: {
     addVacancy(state, vacancy) {
+      console.log('===',vacancy)
       state.vacancies.push(vacancy)
     },
     updateVacancy(state, { index, vacancy }) {

@@ -5,10 +5,10 @@
       <p>Dates </p>
       <ul>
         <li v-for="date,index in vacancy.date" :key="date.id">
-          {{ dayjs(vacancy.date[index]).format(format) }}
-          {{ date.startTime }}
-          {{ date.endTime }}
-          {{ date.price }}
+          {{ dayjs(date[index]).format(format) }},
+          {{ date.startTime }},
+          {{ date.endTime }},
+          {{ date.price }},
           {{ date.type }}
         </li>
       </ul>

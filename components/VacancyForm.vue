@@ -47,7 +47,7 @@
       </div>
 
       <a-form-item>
-        <a-button html-type="submit" style="margin-right: 10px">Delete</a-button>
+        <a-button style="margin-right: 10px">Delete</a-button>
         <a-button type="primary" html-type="submit">Save</a-button>
       </a-form-item>
     </a-form>
@@ -91,7 +91,6 @@ export default {
         store.dispatch('save', props.vacancy.id, vacancyData);
       } else {
         store.dispatch('addVacancy', vacancyData);
-        console.log('vacancyData',vacancyData)
       }      
     }
     }

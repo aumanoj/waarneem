@@ -33,7 +33,7 @@
       const store  = useStore()
       const filterPrice = ref(0)
       const vacancies = computed(()=>{
-        return store.state.vacancies
+        return store.getters.getVacancies
       })
       const  maxPrice = computed(()=> {
         // Calculate the maximum price from vacancies
@@ -48,7 +48,8 @@
         // Filter vacancies based on price range
         let price = null
         if(vacancies.value.length>0){
-          price = vacancies.value.filter((vacancy) => parseInt(vacancy.price) <= filterPrice.value);
+          // price = vacancies.value.filter((vacancy) => parseInt(vacancy.price) <= filterPrice.value);
+          price = vacancies.value.filter((vacancy) => vacancy.date.filter((item)=>item.price) <= filterPrice.value);
         }
         return price
       })

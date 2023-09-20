@@ -16,7 +16,7 @@
   </template>
   
   <script>
-  import dayjs from 'dayjs';
+  import dayjs from 'dayjs'
   export default {
     props: {
       vacancy: Object,

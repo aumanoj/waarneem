@@ -1,7 +1,6 @@
 <template>
   <div class="vacancy-form">
     <h3>{{ vacancy ? "Edit Shift" : "Add Shift" }}</h3>
-    <!-- Add other form fields for start time, end time, price, type, etc. -->
     <a-form
       layout="vertical"
       :model="formData"
@@ -55,9 +54,9 @@
 </template>
 
 <script>
-import { reactive } from 'vue';
-import { useStore } from 'vuex';
-import dayjs from 'dayjs';
+import { reactive } from 'vue'
+import { useStore } from 'vuex'
+import dayjs from 'dayjs'
 export default {
   props: {
     vacancy: Object,
@@ -87,10 +86,7 @@ export default {
           })
          
         })
-        
-      //console.log("check",vacancyData)
       if (props.vacancy) {
-
         store.dispatch('save', props.vacancy.id, result);
       } else {
         store.dispatch('addVacancy', result);

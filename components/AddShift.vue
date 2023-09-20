@@ -32,7 +32,7 @@
         this.open = true
       },
       onClose(){
-          this.open = false;
+          this.open = false
       }
     },
   }
